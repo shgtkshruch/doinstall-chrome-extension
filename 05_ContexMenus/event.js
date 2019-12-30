@@ -22,3 +22,9 @@ chrome.runtime.onInstalled.addListener(() => {
     title: 'Green'
   });
 });
+
+chrome.contextMenus.onClicked.addListener((item) => {
+  chrome.tabs.executeScript({
+    code: `document.body.style.backgroundColor = "${item.menuItemId}";`
+  });
+});
