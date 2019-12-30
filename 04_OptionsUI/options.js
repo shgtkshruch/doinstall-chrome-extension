@@ -2,6 +2,7 @@
 
 const saveBtn = document.querySelector('#save');
 const colors = document.querySelector('#colors');
+const text = document.querySelector('#text');
 
 document.addEventListener('DOMContentLoaded', () => {
   chrome.storage.sync.get({
@@ -14,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 saveBtn.addEventListener('click', function() {
   const color = colors.value;
   chrome.storage.sync.set({ color }, () => {
+    text.textContent = "saved!";
     console.log('saved: ' + color);
   });
 });
