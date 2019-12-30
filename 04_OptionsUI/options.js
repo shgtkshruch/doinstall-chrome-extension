@@ -1,9 +1,10 @@
 'use strict';
 
-const colors = document.querySelector('#colors');
+const saveBtn = document.querySelector('#save');
 
-colors.addEventListener('change', function() {
-  chrome.tabs.executeScript({
-    code: `document.body.style.backgroundColor = "${this.value}";`
+saveBtn.addEventListener('click', function() {
+  const color = document.querySelector('#colors').value;
+  chrome.storage.sync.set({ color }, () => {
+    console.log('saved: ' + color);
   });
 });
